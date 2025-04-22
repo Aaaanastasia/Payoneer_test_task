@@ -1,3 +1,9 @@
+CREATE TABLE IF NOT EXISTS registration_times (
+    CustomerId BIGINT,
+    StepId INT,
+    StartTime TIMESTAMP
+);
+
 WITH step_durations AS (
   SELECT
     CustomerId,
