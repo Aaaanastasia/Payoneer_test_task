@@ -4,6 +4,11 @@ CREATE TABLE IF NOT EXISTS incoming_payments (
     Volume_Amount_USD NUMERIC(12, 3)
 );
 
+CREATE TABLE edd_reviews (
+    CustomerId BIGINT PRIMARY KEY,
+    EDD_Review_Time TIMESTAMP
+);
+
 WITH payments_with_cumsum AS (
   SELECT
     p.CustomerID,
