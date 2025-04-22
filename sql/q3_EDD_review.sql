@@ -15,8 +15,9 @@ WITH payments_with_cumsum AS (
     p.Transaction_Datetime,
     p.Volume_Amount_USD,
     r.EDD_Review_Time,
-    	SUM(p.Volume_Amount_USD) OVER (PARTITION BY p.CustomerID   ORDER BY p.Transaction_Datetime ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
-    ) AS cumulative_usd
+    SUM(p.Volume_Amount_USD) OVER (PARTITION BY p.CustomerID   
+                            ORDER BY p.Transaction_Datetime ROWS BETWEEN UNBOUNDED PRECEDING 
+                            AND CURRENT ROW) AS cumulative_usd
   FROM incoming_payments p
   LEFT JOIN edd_reviews r ON p.CustomerID = r.CustomerID
 ),
